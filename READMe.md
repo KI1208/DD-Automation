@@ -9,3 +9,10 @@ DataDomain作業の効率化
 
 参考として
 http://www.python-excel.org
+
+### xlrd
+
+### テキストテンプレート
+組み込みのTemplateモジュールを使う
+https://stackoverflow.com/questions/6385686/python-technique-or-simple-templating-system-for-plain-text-output
+
