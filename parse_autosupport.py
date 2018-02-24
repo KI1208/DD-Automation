@@ -30,4 +30,4 @@ config = {
 }
 
 with open('result.json', 'w') as f:
-    json.dump(config, f)
+    json.dump(config, f, indent=4, separators=(',', ': '))

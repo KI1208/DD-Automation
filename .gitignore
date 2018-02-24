@@ -1,2 +1,5 @@
 *.xlsx
+*.log
+*.json
+procedure.md
 venv/
