@@ -4,36 +4,38 @@
 import xlrd
 import json
 
-book = xlrd.open_workbook('Sample_SurveySheet_r0.0.xlsx')
-sheet_names = book.sheet_names()
-print(sheet_names)
+class Parse_survey:
+    def __init__(self, filename):
+        self.filename = filename
 
-sheet = book.sheet_by_name('Basic')
+    def parse_survey(self):
+        book = xlrd.open_workbook(self.filename)
+        sheet_names = book.sheet_names()
 
-# partyid = sheet.cell_value(2, 5)
-model = sheet.cell_value(4, 5)
-serialnumber = sheet.cell_value(5, 5)
-hostname = sheet.cell_value(19, 5)
-domainname = sheet.cell_value(20, 5)
-dgw = sheet.cell_value(21, 5)
+        sheet = book.sheet_by_name('Basic')
 
-# 全セルの値取得
-# for row_index in range(sheet.nrows):
-#     for col_index in range(sheet.ncols):
-#         val = sheet.cell_value(rowx=row_index, colx=col_index)
-#         print('cell[{},{}] = {}'.format(row_index, col_index, val))
+        # partyid = sheet.cell_value(2, 5)
+        model = sheet.cell_value(4, 5)
+        serialnumber = sheet.cell_value(5, 5)
+        hostname = sheet.cell_value(19, 5)
+        domainname = sheet.cell_value(20, 5)
+        dgw = sheet.cell_value(21, 5)
 
-config = {
-    # 'PartyID': partyid,
-    'Model': model,
-    'SerialNumber': serialnumber,
-    'HostName': hostname,
-    'DomainName': domainname,
-    'DefaultGateway': dgw
-}
+        # 全セルの値取得
+        # for row_index in range(sheet.nrows):
+        #     for col_index in range(sheet.ncols):
+        #         val = sheet.cell_value(rowx=row_index, colx=col_index)
+        #         print('cell[{},{}] = {}'.format(row_index, col_index, val))
 
-with open('config.json', 'w') as f:
-    json.dump(config, f, indent=4, separators=(',', ': '))
+        config = {
+            # 'PartyID': partyid,
+            'Model': model,
+            'SerialNumber': serialnumber,
+            'HostName': hostname,
+            'DomainName': domainname,
+            'DefaultGateway': dgw
+        }
 
-
-
+        outputfile = 'config/config_' + serialnumber + '.json'
+        with open(outputfile, 'w') as f:
+            json.dump(config, f, indent=4, separators=(',', ': '))

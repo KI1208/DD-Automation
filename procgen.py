@@ -4,16 +4,22 @@
 import json
 from string import Template
 
-# Load config from json
-with open('config.json') as f:
-    config = json.load(f)
+class Procgen:
+    def __init__(self, filename):
+        self.filename = filename
 
-# Create Procedure
-with open('procedure_template.md' ) as f:
-    template = Template(f.read())
-    #do the substitution
-    output = template.substitute(config)
+    def procgen(self):
+        # Load config from json
+        with open(self.filename) as f:
+            config = json.load(f)
 
-with open('procedure.md', 'w', encoding='utf-8') as f:
-    f.write(output)
+        # Create Procedure
+        with open('procedure_template.md' ) as f:
+            template = Template(f.read())
+            #do the substitution
+            output = template.substitute(config)
+
+        outputfile = 'proc/proc_' + config['SerialNumber'] + '.md'
+        with open(outputfile, 'w', encoding='utf-8') as f:
+            f.write(output)
 

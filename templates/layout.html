@@ -1,0 +1,12 @@
+<!doctype html>
+<title>DD-Automation</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}"> <!-- static/style.cssを読み込む -->
+<!--<link rel="stylesheet" href="https://cdn.rawgit.com/jgthms/bulma/master/css/bulma.min.css">-->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">-->
+<div class=page>
+  <h1></h1>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}{% endblock %}    <!-- このブロックが参照時に置き換えられる -->
+</div>

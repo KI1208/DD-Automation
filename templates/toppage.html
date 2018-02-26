@@ -1,0 +1,56 @@
+{% extends "layout.html" %}    <!-- これで元になるHTML(laytout.html)を指定 -->
+{% block body %}    <!-- layout.htmlのbodyというブロックを以下で置き換える -->
+    <h1>サーベイシート</h1>
+    <form action="{{ url_for('upload_file') }}" method=post enctype=multipart/form-data>
+        <p><input type=file name=file>
+            <input type=submit value=Upload>
+        </p>
+    </form>
+    {% for file in filelist %}
+        {{ file }}<br>
+　　　　<a href="{{ url_for('parse_survey', filename=file) }}">構成情報ファイル生成</a>
+        <a href="{{ url_for('download_file', filename=file, filetype='survey') }}">ダウンロード</a><br><br>
+    {% endfor %}
+    <br>
+    <h1>構成情報ファイル</h1>
+    {% for file in configlist %}
+        {{ file }}<br>
+　　　　<a href="{{ url_for('procgen', filename=file) }}">プロシージャ生成</a>
+        <a href="{{ url_for('download_file', filename=file, filetype='config') }}">ダウンロード</a><br><br>
+    {% endfor %}
+    <br>
+    <h1>プロシージャ</h1>
+    {% for file in proclist %}
+        {{ file }}<br>
+　　　　<a href="{{ url_for('download_file', filename=file, filetype='proc') }}">ダウンロード</a><br><br>
+    {% endfor %}
+
+    <h1>autosupport</h1>
+    <form action="{{ url_for('upload_file') }}" method=post enctype=multipart/form-data>
+        <p><input type=file name=file>
+            <input type=submit value=Upload>
+        </p>
+    </form>
+    {% for file in autosupportlist %}
+        {{ file }}<br>
+　　　　<a href="{{ url_for('parse_autosupport', filename=file) }}">構成情報ファイル生成</a>
+        <a href="{{ url_for('download_file', filename=file, filetype='autosupport') }}">ダウンロード</a><br><br>
+    {% endfor %}
+    <br>
+    <h1>コンペア</h1>
+    <form action="{{ url_for('compare') }}" method=post>
+        <p>
+            <h2>サーベイシートから得た構成情報</h2>
+                {% for file in configlist %}
+                    <input type="checkbox" name="choice" value={{ file }}>{{ file }}<br>
+                {% endfor %}
+            <br>
+            <h2>Autosupportから得た構成情報</h2>
+                {% for file in resultlist %}
+                    <input type="checkbox" name="choice" value={{ file }}>{{ file }}<br>
+                {% endfor %}
+            <br>
+            <input type=submit value="コンペア">
+        </p>
+    </form>
+{% endblock %}
