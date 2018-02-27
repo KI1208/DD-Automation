@@ -9,11 +9,19 @@ from procgen import Procgen
 from parse_autosupport import Parse_autosupport
 from compare import Compare
 
-UPLOAD_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\upload\\'
-CONFIG_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\config\\'
-PROC_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\proc\\'
-AUTOSUPPORT_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\autosupport\\'
-RESULT_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\result\\'
+# UPLOAD_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\upload\\'
+# CONFIG_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\config\\'
+# PROC_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\proc\\'
+# AUTOSUPPORT_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\autosupport\\'
+# RESULT_FOLDER = 'C:\\Users\\ikedak2\\PycharmProjects\\DD-Automation\\result\\'
+
+UPLOAD_FOLDER = 'upload\\'
+CONFIG_FOLDER = 'config\\'
+PROC_FOLDER = 'proc\\'
+AUTOSUPPORT_FOLDER = 'autosupport\\'
+RESULT_FOLDER = 'result\\'
+
+
 ALLOWED_EXTENSIONS = set(['xlsx', 'json', 'log'])
 
 app = Flask(__name__)
