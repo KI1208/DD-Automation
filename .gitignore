@@ -2,5 +2,6 @@
 *.log
 *.json
 procedure.md
+test*
 venv/
 old/
